@@ -16,7 +16,7 @@ export default async function InitialScreen() {
       <br />
       <br />
       <div>
-        <Link href="/home">
+        <Link href="/books">
           <p className="font-semibold text-2xl">Clique aqui</p>
         </Link>
       </div>
