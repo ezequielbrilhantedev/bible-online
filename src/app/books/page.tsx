@@ -36,16 +36,18 @@ export default async function Books() {
         </span>
       </div>
 
-      <div className="mobile:w-full mobile:px-4 mobile:py-2 px-40 py-20 grid grid-cols-3 mobile:grid-cols-1 gap-8 mobile:gap-4">
+      <div className="mobile:w-full mobile:px-4 mobile:py-2 px-40 py-20 grid grid-cols-3 mobile:grid-cols-3 gap-8 mobile:gap-4">
         {books.map((book) => {
           return (
             <div className="w-full desktop:w-[300px] h-32" key={book.name}>
               <Link href={`books/${book.abbrev.pt}`}>
                 <div className="border bg-zinc-600 h-full rounded-lg flex flex-col text-center justify-center cursor-pointer hover:bg-zinc-200 hover:text-black">
-                  <p className="uppercase text-4xl text-white">
+                  <p className="uppercase text-4xl text-white mobile:text-3xl mobile:font-bold">
                     {book.abbrev.pt}
                   </p>
-                  <p className="text-2xl text-white">{book.name}</p>
+                  <p className="text-2xl text-white mobile:text-base">
+                    {book.name}
+                  </p>
                 </div>
               </Link>
             </div>

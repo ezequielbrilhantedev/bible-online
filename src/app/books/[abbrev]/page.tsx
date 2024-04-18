@@ -1,5 +1,6 @@
 import { BookProps } from '@/data/types/books'
 import { Metadata } from 'next'
+import Link from 'next/link'
 
 interface Book {
   params: {
@@ -47,7 +48,9 @@ export default async function AbbrevBook({ params }: Book) {
         <div className="flex justify-between px-12 pt-4">
           <h1 className="text-5xl text-blue-400 font-bold">Bíblia Online</h1>
           <div>
-            <p className="text-white">Página Inicial</p>
+            <Link href="/books">
+              <p className="text-white">Página Inicial</p>
+            </Link>
           </div>
         </div>
       </header>
