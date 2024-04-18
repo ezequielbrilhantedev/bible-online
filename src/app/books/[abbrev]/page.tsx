@@ -1,5 +1,5 @@
 import { BookProps } from '@/data/types/books'
-import { Metadata } from 'next'
+// import { Metadata } from 'next'
 import Link from 'next/link'
 
 interface Book {
@@ -24,13 +24,13 @@ async function getBook(abbrev: string): Promise<BookProps> {
   return data
 }
 
-export async function generateMetadata({ params }: Book): Promise<Metadata> {
-  const book = await getBook(params.abbrev)
+// export async function generateMetadata({ params }: Book): Promise<Metadata> {
+//   const book = await getBook(params.abbrev)
 
-  return {
-    title: book.abbrev,
-  }
-}
+//   return {
+//     title: book.abbrev,
+//   }
+// }
 
 export default async function AbbrevBook({ params }: Book) {
   const book = await getBook(params.abbrev)
@@ -43,7 +43,7 @@ export default async function AbbrevBook({ params }: Book) {
   }
 
   return (
-    <div className="h-full bg-zinc-900">
+    <div className="h-screen bg-zinc-900">
       <header>
         <div className="flex justify-between px-12 pt-4">
           <h1 className="text-5xl text-blue-400 font-bold">Bíblia Online</h1>
@@ -55,7 +55,7 @@ export default async function AbbrevBook({ params }: Book) {
         </div>
       </header>
 
-      <div className="px-40 pt-24 flex justify-center">
+      <div className="mobile:px-8 px-40 pt-24 flex justify-center">
         <div className="flex flex-col">
           <h1 className="text-white font-extrabold text-5xl text-center">
             {book.name}
@@ -65,13 +65,13 @@ export default async function AbbrevBook({ params }: Book) {
               Capítulos
             </p>
           </div>
-          <div className="grid grid-cols-10 mobile:grid-cols-5 gap-4 pt-8">
+          <div className="grid grid-cols-10 mobile:grid-cols-5 gap-4 mobile:gap-2 pt-8">
             {arrayChapters.map((chapter) => (
               <div
-                className="border w-8 h-8 cursor-pointer hover:bg-blue-400"
+                className="border mobile:w-8 mobile:h-8 w-20 h-20 cursor-pointer hover:bg-blue-400"
                 key={chapter}
               >
-                <p className="text-white text-center h-full flex items-center justify-center">
+                <p className="text-white text-center h-full flex items-center justify-center desktop:text-2xl">
                   {chapter}
                 </p>
               </div>

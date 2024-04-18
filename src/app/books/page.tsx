@@ -22,8 +22,8 @@ export default async function Books() {
   const books = await getBooks()
 
   return (
-    <div className=" bg-zinc-900">
-      <div className="flex justify-center pt-8">
+    <div className="bg-zinc-900">
+      <div className="flex justify-center pt-8 mobile:px-8">
         <span className="flex border bg-gray-300 w-[39rem] gap-2 px-4 h-12 items-center rounded-3xl">
           <SearchIcon />
           <input
@@ -36,12 +36,12 @@ export default async function Books() {
         </span>
       </div>
 
-      <div className="mobile:w-full mobile:px-4 mobile:py-2 px-40 py-20 grid grid-cols-3 mobile:grid-cols-3 gap-8 mobile:gap-4">
+      <div className="mobile:w-full mobile:px-4 mobile:py-10 px-40 py-20 grid grid-cols-6 mobile:grid-cols-3 gap-8 mobile:gap-4">
         {books.map((book) => {
           return (
-            <div className="w-full desktop:w-[300px] h-32" key={book.name}>
+            <div className="w-full desktop:w-44 h-32" key={book.name}>
               <Link href={`books/${book.abbrev.pt}`}>
-                <div className="border bg-zinc-600 h-full rounded-lg flex flex-col text-center justify-center cursor-pointer hover:bg-zinc-200 hover:text-black">
+                <div className="border bg-zinc-600 h-full rounded-lg flex flex-col text-center justify-center cursor-pointer hover:bg-blue-400 hover:text-black">
                   <p className="uppercase text-4xl text-white mobile:text-3xl mobile:font-bold">
                     {book.abbrev.pt}
                   </p>
