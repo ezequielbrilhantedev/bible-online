@@ -5,6 +5,7 @@ interface Book {
   params: {
     abbrev: string
   }
+  // chapters: number[]
 }
 
 async function getBook(abbrev: string): Promise<BookProps> {
@@ -33,17 +34,48 @@ export async function generateMetadata({ params }: Book): Promise<Metadata> {
 export default async function AbbrevBook({ params }: Book) {
   const book = await getBook(params.abbrev)
 
+  const qtdChapters = book.chapters
+
+  const arrayChapters: number[] = []
+  for (let i = 1; i < qtdChapters; i++) {
+    arrayChapters.push(i)
+  }
+
   return (
-    <div className="h-screen bg-zinc-900">
+    <div className="h-full bg-zinc-900">
       <header>
-        <div className="flex justify-between">
-          <h1 className="text-5xl text-blue-400">Bíblia Online</h1>
+        <div className="flex justify-between px-12 pt-4">
+          <h1 className="text-5xl text-blue-400 font-bold">Bíblia Online</h1>
           <div>
             <p className="text-white">Página Inicial</p>
           </div>
         </div>
       </header>
-      <h1 className="text-white">{book.name}</h1>
+
+      <div className="px-40 pt-24 flex justify-center">
+        <div className="flex flex-col">
+          <h1 className="text-white font-extrabold text-5xl text-center">
+            {book.name}
+          </h1>
+          <div className="pt-24">
+            <p className="text-white font-bold text-3xl text-center">
+              Capítulos
+            </p>
+          </div>
+          <div className="grid grid-cols-10 mobile:grid-cols-5 gap-4 pt-8">
+            {arrayChapters.map((chapter) => (
+              <div
+                className="border w-8 h-8 cursor-pointer hover:bg-blue-400"
+                key={chapter}
+              >
+                <p className="text-white text-center h-full flex items-center justify-center">
+                  {chapter}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -23,7 +23,7 @@ export default async function Books() {
 
   return (
     <div className=" bg-zinc-900">
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-8">
         <span className="flex border bg-gray-300 w-[39rem] gap-2 px-4 h-12 items-center rounded-3xl">
           <SearchIcon />
           <input
